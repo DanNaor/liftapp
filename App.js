@@ -1,12 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,  View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ChooseProgramPage from './pages/ChooseProgramPage';
+import WelcomePage from './pages/WelcomePage';
 
-export default function App() {
+
+const Stack = createNativeStackNavigator()
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <View style={styles.container}>
+        <Stack.Navigator initialRouteName="WelcomePage">
+          <Stack.Screen name="WelcomePage" component={WelcomePage} />
+          <Stack.Screen name="ChooseProgramPage" component={ChooseProgramPage} />
+        </Stack.Navigator>
+      </View>
+    </NavigationContainer>
   );
 }
 
@@ -18,3 +28,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
